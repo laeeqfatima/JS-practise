@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship game</title>
+</head>
+<body>
+    <h1>Let's play battleship!</h1>
+    <script>
+        var randomLoc = Math.floor(Math.random() * 5);
+        var loc1 = randomLoc, loc2 = loc1 + 1, loc3 = loc2 + 1;
+        var guess;
+        var hits = 0;
+        var guesses = 0;
+        var isSunk = false;
+
+        while(isSunk == false) {
+            guess = prompt("Make your guess from 0-6 and hit the battleship");
+            if(guess<0 || guess>6){
+                alert("Make a valid guess");
+            }
+            else{
+                guesses+=1;
+                if(guess==loc1 || guess==loc2 || guess==loc3) {
+                    hits+=1;
+                    alert("You hit a ship!");
+                    
+                    if(hits==3){
+                        isSunk=true;
+                        alert("You sank my battleship!!")
+                    }
+                    else{
+                        alert("Enter any number from 0-6 other than " + guess);
+                    }
+                }
+                else{
+                    alert("You missed!!");
+                }
+            }    
+
+        }
+        alert("You sank the battleship in " + guesses + " guesses!")
+
+
+    </script>
+</body>
+</html>
